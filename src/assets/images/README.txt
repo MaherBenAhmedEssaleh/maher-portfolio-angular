@@ -1,0 +1,1 @@
+Remplacez portrait-placeholder.jpg par votre photo personnelle.
