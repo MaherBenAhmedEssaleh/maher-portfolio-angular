@@ -1,8 +1,236 @@
-<header class="header"><a class="brand" (click)="scroll('accueil')">MB<span>.</span></a><nav [class.open]="menu"><a *ngFor="let item of [{id:'accueil',label:'Accueil'},{id:'apropos',label:'À propos'},{id:'competences',label:'Compétences'},{id:'projets',label:'Projets'},{id:'blog',label:'Blog'}]" [class.active]="active===item.id" (click)="scroll(item.id)">{{item.label}}</a><a class="nav-cta" (click)="scroll('contact')">Parlons-en <lucide-icon [img]="icons.ArrowUpRight" [size]="16"/></a></nav><div class="header-actions"><button class="icon-btn" (click)="toggleTheme()" [attr.aria-label]="dark?'Mode clair':'Mode sombre'"><lucide-icon [img]="dark?icons.Sun:icons.Moon"/></button><button class="icon-btn mobile-toggle" (click)="menu=!menu"><lucide-icon [img]="menu?icons.X:icons.Menu"/></button></div></header>
-<main><section id="accueil" class="hero"><div class="hero-copy reveal"><div class="eyebrow"><span class="status-dot"></span> Disponible pour de nouvelles opportunités</div><h1>Je transforme les idées en <em>solutions digitales.</em></h1><p class="hero-text">Je suis <strong>Maher Ben Ahmed Essaleh</strong>, ingénieur d’études et développeur Full-stack spécialisé en Spring Boot et Angular. Je conçois des applications performantes, fiables et évolutives.</p><div class="hero-buttons"><button class="btn primary" (click)="scroll('projets')">Découvrir mes projets <lucide-icon [img]="icons.ArrowDown" [size]="17"/></button><a class="btn secondary" href="assets/Maher-Ben-Ahmed-Essaleh-CV.pdf" download>Télécharger mon CV <lucide-icon [img]="icons.Download" [size]="16"/></a></div><div class="socials"><a href="mailto:maher.baem@gmail.com"><lucide-icon [img]="icons.Mail" [size]="18"/> maher.baem&#64;gmail.com</a><a href="https://linkedin.com/in/maher-ben-ahmed-saleh" target="_blank"><lucide-icon [img]="icons.Linkedin" [size]="18"/> LinkedIn</a><a href="https://github.com/maherbenahmedsalah" target="_blank"><lucide-icon [img]="icons.Github" [size]="18"/> GitHub</a></div></div><div class="hero-visual"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="portrait-placeholder"><span><lucide-icon [img]="icons.Code2" [size]="48"/></span><small>Votre photo ici</small></div><div class="float-card card-one"><lucide-icon [img]="icons.Code2"/><div><strong>Full-stack</strong><small>Spring Boot · Angular</small></div></div><div class="float-card card-two"><span class="mini-dot"></span><div><strong>4+ ans</strong><small>d’expérience</small></div></div></div></section>
-<section class="metrics"><div><strong>4<span>+</span></strong><small>Années d’expérience</small></div><div><strong>2</strong><small>Modules ERP livrés</small></div><div><strong>3</strong><small>Langues</small></div><div><strong>∞</strong><small>Envie d’apprendre</small></div></section>
-<section id="apropos" class="section about"><div class="section-label">01 / À PROPOS</div><div class="about-grid"><div><h2>Créer du logiciel qui a <em>du sens.</em></h2></div><div class="about-content"><p>Développeur Web & Logiciel confirmé, animé par l’innovation technologique et l’amélioration continue. Je m’investis dans chaque étape d’un projet, de l’analyse à la mise en production.</p><p>Mon approche combine exigence technique, compréhension des besoins métiers et attention portée à l’expérience utilisateur. J’aime résoudre les problèmes complexes et faire progresser les équipes comme les produits.</p><div class="signature">Maher Ben Ahmed Essaleh <span>— Ingénieur logiciel</span></div></div></div></section>
-<section id="competences" class="section skills"><div class="section-label">02 / COMPÉTENCES</div><div class="section-head"><h2>Mon terrain de jeu <em>technique.</em></h2><p>Les outils que j’utilise pour construire des produits robustes et prêts à évoluer.</p></div><div class="skill-grid"><article><lucide-icon [img]="icons.Code2"/><h3>Frontend</h3><p>Des interfaces rapides, accessibles et cohérentes.</p><div class="chips"><span>Angular</span><span>TypeScript</span><span>Angular Material</span></div></article><article><lucide-icon [img]="icons.Server"/><h3>Backend</h3><p>Des services fiables, sécurisés et maintenables.</p><div class="chips"><span>Java</span><span>Spring Boot</span><span>API REST</span></div></article><article><lucide-icon [img]="icons.Database"/><h3>Données & DevOps</h3><p>Des fondations solides pour vos applications.</p><div class="chips"><span>PostgreSQL</span><span>Docker</span><span>GitLab CI/CD</span></div></article></div></section>
-<section id="projets" class="section projects"><div class="section-label">03 / PROJETS SÉLECTIONNÉS</div><div class="section-head"><h2>Ce que j’ai <em>construit.</em></h2><p>Quelques projets professionnels et espaces réservés à vos réalisations personnelles.</p></div><div class="project-grid"><article class="project-card" *ngFor="let p of projects"><div class="project-image" [style.background-image]="'url('+p.image+')'"><span>{{p.type}}</span><button><lucide-icon [img]="icons.ArrowUpRight"/></button></div><div class="project-info"><h3>{{p.title}}</h3><p>{{p.description}}</p><div class="chips"><span *ngFor="let t of p.tags">{{t}}</span></div></div></article></div></section>
-<section id="blog" class="section blog"><div class="section-label">04 / NOTES & ARTICLES</div><div class="section-head"><h2>Partager ce que <em>j’apprends.</em></h2><p>Un espace pour documenter les idées, les outils et les retours d’expérience.</p></div><div class="post-list"><article *ngFor="let post of posts"><div class="post-date">{{post.date}}</div><div><h3>{{post.title}}</h3><p>{{post.excerpt}}</p></div><button><lucide-icon [img]="icons.ArrowUpRight"/></button></article></div></section>
-<section id="contact" class="contact"><div class="contact-glow"></div><div class="section-label">05 / CONTACT</div><h2>Un projet en tête ?<br><em>Construisons-le.</em></h2><p>Vous avez une idée, un défi technique ou simplement envie d’échanger ? Ma boîte mail est ouverte.</p><form (ngSubmit)="submit()" #form="ngForm"><input required name="name" ngModel placeholder="Votre nom"><input required type="email" name="email" ngModel placeholder="Votre adresse email"><textarea required name="message" ngModel rows="4" placeholder="Parlez-moi de votre projet..."></textarea><button class="btn primary" [disabled]="!form.valid">Envoyer le message <lucide-icon [img]="icons.Send" [size]="16"/></button><span class="success" *ngIf="sent">Merci ! Votre message est prêt à être envoyé.</span></form></section></main><footer><span>© 2026 Maher Ben Ahmed Essaleh</span><span>Conçu avec passion & Angular</span><div><a href="mailto:maher.baem@gmail.com"><lucide-icon [img]="icons.Mail" [size]="16"/></a><a href="https://github.com/maherbenahmedsalah"><lucide-icon [img]="icons.Github" [size]="16"/></a></div></footer>
+<header class="header">
+  <a class="brand" (click)="scroll('accueil')">MB<span>.</span></a>
+  <nav [class.open]="menu">
+    <a
+      *ngFor="
+        let item of [
+          { id: 'accueil', label: t.nav.home },
+          { id: 'apropos', label: t.nav.about },
+          { id: 'competences', label: t.nav.skills },
+          { id: 'projets', label: t.nav.projects },
+          { id: 'blog', label: t.nav.blog },
+        ]
+      "
+      [class.active]="active === item.id"
+      (click)="scroll(item.id)"
+      >{{ item.label }}</a
+    ><a class="nav-cta" (click)="scroll('contact')"
+      >{{ t.nav.contact }} <lucide-icon [img]="icons.ArrowUpRight" [size]="16"
+    /></a>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-btn language-btn" [class.active]="language === 'fr'" (click)="setLanguage('fr')">FR</button>
+    <button class="icon-btn language-btn" [class.active]="language === 'en'" (click)="setLanguage('en')">EN</button>
+    <button
+      class="icon-btn"
+      (click)="toggleTheme()"
+      [attr.aria-label]="dark ? 'Light mode' : 'Dark mode'"
+    >
+      <lucide-icon [img]="dark ? icons.Sun : icons.Moon" /></button
+    ><button class="icon-btn mobile-toggle" (click)="menu = !menu">
+      <lucide-icon [img]="menu ? icons.X : icons.Menu" />
+    </button>
+  </div>
+</header>
+<main>
+  <section id="accueil" class="hero">
+    <div class="hero-copy reveal">
+      <div class="eyebrow">
+        <span class="status-dot"></span> {{ t.available }}
+      </div>
+      <h1>{{ t.headline }} <em>{{ t.headlineAccent }}</em></h1>
+      <p class="hero-text">
+        {{ t.hero }}
+      </p>
+      <div class="hero-buttons">
+        <button class="btn primary" (click)="scroll('projets')">
+          {{ t.projectsCta }}
+          <lucide-icon [img]="icons.ArrowDown" [size]="17" /></button
+        ><a
+          class="btn secondary"
+          href="assets/Maher-Ben-Ahmed-Essaleh-CV.pdf"
+          download
+          >{{ t.download }} <lucide-icon [img]="icons.Download" [size]="16"
+        /></a>
+      </div>
+      <div class="socials">
+        <a href="mailto:maher.baem@gmail.com"
+          ><lucide-icon [img]="icons.Mail" [size]="18" />
+          maher.baem&#64;gmail.com</a
+        ><a href="https://linkedin.com/in/maher-ben-ahmed-saleh" target="_blank"
+          ><lucide-icon [img]="icons.Linkedin" [size]="18" /> LinkedIn</a
+        ><a href="https://github.com/maherbenahmedsalah" target="_blank"
+          ><lucide-icon [img]="icons.Github" [size]="18" /> GitHub</a
+        >
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+      <div class="portrait-placeholder">
+        <span><lucide-icon [img]="icons.Code2" [size]="48" /></span
+        ><small>{{ t.photo }}</small>
+      </div>
+      <div class="float-card card-one">
+        <lucide-icon [img]="icons.Code2" />
+        <div>
+          <strong>{{ t.fullstack }}</strong><small>Spring Boot · Angular</small>
+        </div>
+      </div>
+      <div class="float-card card-two">
+        <span class="mini-dot"></span>
+        <div><strong>4+ {{ t.experience }}</strong><small>{{ t.experience }}</small></div>
+      </div>
+    </div>
+  </section>
+  <section class="metrics">
+    <div>
+      <strong>4<span>+</span></strong
+      ><small>{{ t.years }}</small>
+    </div>
+    <div><strong>2</strong><small>{{ t.erp }}</small></div>
+    <div><strong>3</strong><small>{{ t.languages }}</small></div>
+    <div><strong>∞</strong><small>{{ t.learn }}</small></div>
+  </section>
+  <section id="apropos" class="section about">
+    <div class="section-label">01 / {{ t.aboutLabel }}</div>
+    <div class="about-grid">
+      <div>
+        <h2>{{ t.aboutTitle }} <em>{{ t.aboutAccent }}</em></h2>
+      </div>
+      <div class="about-content">
+        <p>
+          {{ t.aboutOne }}
+        </p>
+        <p>
+          {{ t.aboutTwo }}
+        </p>
+        <div class="signature">
+          Maher Ben Ahmed Essaleh <span>— {{ t.software }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="competences" class="section skills">
+    <div class="section-label">02 / {{ t.skillsLabel }}</div>
+    <div class="section-head">
+      <h2>{{ t.skillsTitle }} <em>{{ t.skillsAccent }}</em></h2>
+      <p>
+        {{ t.skillsIntro }}
+      </p>
+    </div>
+    <div class="skill-grid">
+      <article>
+        <lucide-icon [img]="icons.Code2" />
+        <h3>Frontend</h3>
+        <p>{{ t.frontendText }}</p>
+        <div class="chips">
+          <span>Angular</span><span>TypeScript</span
+          ><span>Angular Material</span>
+        </div>
+      </article>
+      <article>
+        <lucide-icon [img]="icons.Server" />
+        <h3>Backend</h3>
+        <p>{{ t.backendText }}</p>
+        <div class="chips">
+          <span>Java</span><span>Spring Boot</span><span>API REST</span>
+        </div>
+      </article>
+      <article>
+        <lucide-icon [img]="icons.Database" />
+        <h3>{{ t.dataTitle }}</h3>
+        <p>{{ t.dataText }}</p>
+        <div class="chips">
+          <span>PostgreSQL</span><span>Docker</span><span>GitLab CI/CD</span>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section id="projets" class="section projects">
+    <div class="section-label">03 / {{ t.projectsLabel }}</div>
+    <div class="section-head">
+      <h2>{{ t.projectsTitle }} <em>{{ t.projectsAccent }}</em></h2>
+      <p>
+        {{ t.projectsIntro }}
+      </p>
+    </div>
+    <div class="project-grid">
+      <article class="project-card" *ngFor="let p of projects">
+        <div
+          class="project-image"
+          [style.background-image]="'url(' + p.image + ')'"
+        >
+          <span>{{ p.type }}</span
+          ><button [attr.aria-label]="p.title"><lucide-icon [img]="icons.ArrowUpRight" /></button>
+        </div>
+        <div class="project-info">
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.description }}</p>
+          <div class="chips">
+            <span *ngFor="let t of p.tags">{{ t }}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section id="blog" class="section blog">
+    <div class="section-label">04 / {{ t.blogLabel }}</div>
+    <div class="section-head">
+      <h2>{{ t.blogTitle }} <em>{{ t.blogAccent }}</em></h2>
+      <p>
+        {{ t.blogIntro }}
+      </p>
+    </div>
+    <div class="post-list">
+      <article *ngFor="let post of posts">
+        <div class="post-date">{{ post.date }}</div>
+        <div>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt }}</p>
+        </div>
+        <button [attr.aria-label]="post.title"><lucide-icon [img]="icons.ArrowUpRight" /></button>
+      </article>
+    </div>
+  </section>
+  <section id="contact" class="contact">
+    <div class="contact-glow"></div>
+    <div class="section-label">05 / {{ t.contactLabel }}</div>
+    <h2>{{ t.contactTitle }}<br /><em>{{ t.contactAccent }}</em></h2>
+    <p>
+      {{ t.contactIntro }}
+    </p>
+    <form (ngSubmit)="submit()" #form="ngForm">
+      <input required name="name" ngModel [placeholder]="t.name" /><input
+        required
+        type="email"
+        name="email"
+        ngModel
+        [placeholder]="t.email"
+      /><textarea
+        required
+        name="message"
+        ngModel
+        rows="4"
+        [placeholder]="t.message"
+      ></textarea
+      ><button class="btn primary" [disabled]="!form.valid">
+        {{ t.send }}
+        <lucide-icon [img]="icons.Send" [size]="16" /></button
+      ><span class="success" *ngIf="sent"
+        >{{ t.success }}</span
+      >
+    </form>
+  </section>
+</main>
+<footer>
+  <span>© 2026 Maher Ben Ahmed Essaleh</span
+  ><span>{{ t.footer }}</span>
+  <div>
+    <a href="mailto:maher.baem@gmail.com"
+      ><lucide-icon [img]="icons.Mail" [size]="16" /></a
+    ><a href="https://github.com/maherbenahmedsalah"
+      ><lucide-icon [img]="icons.Github" [size]="16"
+    /></a>
+  </div>
+</footer>
